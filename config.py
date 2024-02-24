@@ -1,0 +1,1 @@
+tkn = """YOUR_BOT_TOKEN"""
