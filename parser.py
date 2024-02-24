@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from urls import url
-
-inner_html = str(urlopen(url).read(), 'utf-8')
+def inner_html(url):
+    return str(urlopen(url).read(), 'utf-8')
 
 
 def get_link(html):
@@ -14,8 +14,9 @@ def get_link(html):
     price.string.replace_with('Цена в Steam: ' + price.string)
     title_text = title.get_text()
     price_text = price.get_text()
-    print(title_text)
-    print(price_text)
+    return {'title': title_text, 'price': price_text}
 
 
-get_link(inner_html)
+def parse(url):
+    return get_link(inner_html(url))
+
